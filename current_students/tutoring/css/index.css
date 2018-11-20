@@ -6,6 +6,11 @@
     margin: auto;
 }
 
+.tutor-card {
+    background: whitesmoke;
+    margin-bottom: 1em;
+}
+
 /*TEXT COLORS*/
 
 .green{
