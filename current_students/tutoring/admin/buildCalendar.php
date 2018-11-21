@@ -179,10 +179,6 @@
 	$calendar .= $sunString . $monString . $tueString . $wedString .
 		$thuString. $friString . $satString . "</tr></table>";
 	
-	// Displays the calendar
-	
-	echo "Preformating and style<hr><br>" . $calendar;
-	
 ////////////////////// Creates the PHP page string /////////////////
 	
 	// Creates a string to write to file
@@ -212,4 +208,4 @@
 	fclose($tutoringFile);
 ?>
 
-<a href='tutoring.php'>Tutoring Schedule</a>
+<h2>Your changes have been successfully saved <a href="tutoring.php">click to view them</a></h2>
