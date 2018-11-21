@@ -1,7 +1,7 @@
 <?php
 ///////////////////////// Reads the CSV and makes the table /////////////
 	// Makes the array for all events
-	$events;
+	$events = array (array(),array(),array(),array(),array(),array(),array());
 	
 	// Reads the CSV file containing all events
 	$csvFileName = "calendarData.csv";
@@ -11,20 +11,82 @@
 		die("Unable to open $csvFileName");
 	}
 	
-	// Makes each row of the file into an array and puts it in
-	// an associative array with each key being days of the week
+	// Assigns the arrays of each line to the correct day
 	while(!feof($csvFile))
 	{
 		$line = fgets($csvFile);
 		$array = explode(";",$line);
-		$events[$array[0]][] = $array;
+		switch($array[0])
+		{
+			case "Sunday":
+				$events[0][] = $array;
+				break;
+			case "Monday":
+				$events[1][] = $array;
+				break;
+			case "Tuesday":
+				$events[2][] = $array;
+				break;
+			case "Wednesday":
+				$events[3][] = $array;
+				break;
+			case "Thursday":
+				$events[4][] = $array;
+				break;
+			case "Friday":
+				$events[5][] = $array;
+				break;
+			case "Saturday":
+				$events[6][] = $array;
+				break;
+		}
 	}
 	
 	// Closes the file
 	fclose($csvFile);
 	
-	// Creates an array of the keys for the events
-	$eventsKeys = array_keys($events);
+	// Function used to sort the array of events
+	function compareStart($x,$y)
+	{	
+		// Adds 12 to value of pm times
+		if(trim($x[2])==trim("pm"))
+		{	
+			$xVal = $x[1]+12;
+		}
+		else
+		{
+			$xVal = $x[1];
+		}
+		
+		if(trim($y[2])==trim("pm"))
+		{	
+			$yVal = $y[1]+12;
+		}
+		else
+		{
+			$yVal = $y[1];
+		}
+		
+		// Evaluates if xVal is smaller than yVal
+		if($xVal==$yVal)
+		{
+			return 0;
+		}
+		else if($xVal>$yVal)
+		{
+			return 1;
+		}
+		else
+		{
+			return -1;
+		}
+	}
+	
+	// Sorts the events array
+	for($i=0;$i<count($events);$i++)
+	{
+		usort($events[$i],"compareStart");
+	}
 	
 	// Creates the top of the calendar table
 	$calendar = "<table>
@@ -52,39 +114,53 @@
 	for($i=0;$i<count($events);$i++)
 	{
 		// Iterates through the arrays of the current day
-		for($ii=0;$ii<count($events[$eventsKeys[$i]]);$ii++)
+		for($ii=0;$ii<count($events[$i]);$ii++)
 		{
 			// Checks the day of each array of the current day in a switch
-			switch ($events[$eventsKeys[$i]][$ii][0])
+			switch ($events[$i][$ii][0])
 			{
 				// Creates a div element with the start and end time displayed for each event
 				case "Sunday":
-					$sunString .= "<div>Start Time: " . $events[$eventsKeys[$i]][$ii][1]
-						. "<br>End Time: " . $events[$eventsKeys[$i]][$ii][2] . "</div><hr>";
+					$sunString .= "<div>Start Time: " . $events[$i][$ii][1]
+						. $events[$i][$ii][2]
+						. "<br>End Time: " . $events[$i][$ii][3]
+						. $events[$i][$ii][4] . "</div><hr>";
 					break;
 				case "Monday":
-					$monString .= "<div>Start Time: " . $events[$eventsKeys[$i]][$ii][1]
-						. "<br>End Time: " . $events[$eventsKeys[$i]][$ii][2] . "</div><hr>";					
+					$monString .= "<div>Start Time: " . $events[$i][$ii][1]
+						. $events[$i][$ii][2]
+						. "<br>End Time: " . $events[$i][$ii][3]
+						. $events[$i][$ii][4] . "</div><hr>";
 					break;
 				case "Tuesday":
-					$tueString .= "<div>Start Time: " . $events[$eventsKeys[$i]][$ii][1]
-						. "<br>End Time: " . $events[$eventsKeys[$i]][$ii][2] . "</div><hr>";
+					$tueString .= "<div>Start Time: " . $events[$i][$ii][1]
+						. $events[$i][$ii][2]
+						. "<br>End Time: " . $events[$i][$ii][3]
+						. $events[$i][$ii][4] . "</div><hr>";
 					break;
 				case "Wednesday":
-					$wedString .= "<div>Start Time: " . $events[$eventsKeys[$i]][$ii][1]
-						. "<br>End Time: " . $events[$eventsKeys[$i]][$ii][2] . "</div><hr>";
+					$wedString .= "<div>Start Time: " . $events[$i][$ii][1]
+						. $events[$i][$ii][2]
+						. "<br>End Time: " . $events[$i][$ii][3]
+						. $events[$i][$ii][4] . "</div><hr>";
 					break;
 				case "Thursday":
-					$thuString .= "<div>Start Time: " . $events[$eventsKeys[$i]][$ii][1]
-						. "<br>End Time: " . $events[$eventsKeys[$i]][$ii][2] . "</div><hr>";
+					$thuString .= "<div>Start Time: " . $events[$i][$ii][1]
+						. $events[$i][$ii][2]
+						. "<br>End Time: " . $events[$i][$ii][3]
+						. $events[$i][$ii][4] . "</div><hr>";
 					break;
 				case "Friday":
-					$friString .= "<div>Start Time: " . $events[$eventsKeys[$i]][$ii][1]
-						. "<br>End Time: " . $events[$eventsKeys[$i]][$ii][2] . "</div><hr>";
+					$friString .= "<div>Start Time: " . $events[$i][$ii][1]
+						. $events[$i][$ii][2]
+						. "<br>End Time: " . $events[$i][$ii][3]
+						. $events[$i][$ii][4] . "</div><hr>";
 					break;
 				case "Saturday":
-					$satString .= "<div>Start Time: " . $events[$eventsKeys[$i]][$ii][1]
-						. "<br>End Time: " . $events[$eventsKeys[$i]][$ii][2] . "</div><hr>";
+					$satString .= "<div>Start Time: " . $events[$i][$ii][1]
+						. $events[$i][$ii][2]
+						. "<br>End Time: " . $events[$i][$ii][3]
+						. $events[$i][$ii][4] . "</div><hr>";
 					break;
 			}
 		}
