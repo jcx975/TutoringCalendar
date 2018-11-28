@@ -1,6 +1,13 @@
+
 <?php
-    $str = file_get_contents( "test.txt" );
-    $names = json_decode( $str, true );
+    include "./functions/readTutors.php";
+    include "./functions/buildTutorBlock.php";
+    $tutors = readTutors( "./files/tutors.csv" );
+    $str = "";
+    for ( $i = 0; $i < count( $tutors ); $i++ )
+    {
+        $str .= buildTutorBlock( $tutors[ $i ], "./files/" );
+    }
 ?>
 
 <?php
@@ -25,14 +32,13 @@
 
     <div class="row">
         <h3 id="title">Tutors</h3>
-        <button type="button" class="button tut-add-button">Add tutor</button>
+        <a href="./editTutors.php" class="button tut-add-button">Edit tutors</a>
         <div class="large-12 columns">
             <?php
-                for ( $i = 0; $i < count( $names ); $i++ )
-                {
+                echo $str;
             ?>
-            <div class="large-12 columns tutor-card">
-                <h4><span class="tut-name"><?=$names[ $i ]?></span></h4>
+            <!-- <div class="large-12 columns tutor-card">
+                <h4><span class="tut-name"><?=$tutors[ $i ][ 0 ]?> <?=$tutors[ $i ][ 1 ]?></span></h4>
                 <div class="columns small-8">
                 <p>Times:</p>
                     <table>
@@ -49,17 +55,15 @@
                     </table>
                 </div>
                 <div class="columns small-4">
-                    <button type="button" class="button tut-edit-button">Edit</button>
-                    <button type="button" class="alert button tut-delete-button">Delete</button>
+                    <button type="button" class="button tut-edit-button">Edit time</button>
                 </div>
-            </div>
-            <?php
-                }
-            ?>
+            </div> -->
         </div>
         <hr>
     </div>
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
+    <div class="schedule">
+    </div>
 <?php
     include $path."footer.php";
 ?>
