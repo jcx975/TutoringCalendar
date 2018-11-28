@@ -1,4 +1,3 @@
-
 <?php
     $str = file_get_contents( "test.txt" );
     $names = json_decode( $str, true );
