@@ -3,7 +3,7 @@
 	// Function that takes a pathway to the files and returns a string with the schedule
 	//
 	
-	if(!function_exists("buildTutoringSchedule");
+	if(!function_exists("buildTutoringSchedule"))
 	{
 		function buildTutoringSchedule($path)
 		{
@@ -15,12 +15,14 @@
 			
 			// Makes the correct pathway to event.csv
 			$eventsFileName = $path . "events.csv";
+
+			$fileName = $path . "tutors.csv";
 			
 			// Gets the tutors array
-			$tutors = readTutors($path);
+			$tutors = readTutors($fileName);
 			
 			// Writes the events.csv file
-			writeEvents($tutors);
+			writeEvents($tutors, $path);
 			
 			// Gets the events array
 			$events = readEvents($eventsFileName);

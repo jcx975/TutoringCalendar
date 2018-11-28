@@ -1,6 +1,7 @@
 
 <?php
     include "./functions/readTutors.php";
+    include "./functions/buildTutoringSchedule.php";
     include "./functions/buildTutorBlock.php";
     $tutors = readTutors( "./files/tutors.csv" );
     $str = "";
@@ -30,40 +31,21 @@
     </div>
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
 
-    <div class="row">
-        <h3 id="title">Tutors</h3>
-        <a href="./editTutors.php" class="button tut-add-button">Edit tutors</a>
+    <div class="row full-width purple-background round">
+        <a href="./editTutors.php" class="button tut-add-button float-right">Add tutor</a>
+        <h2 class="white" id="title">Tutors</h2>
         <div class="large-12 columns">
             <?php
                 echo $str;
             ?>
-            <!-- <div class="large-12 columns tutor-card">
-                <h4><span class="tut-name"><?=$tutors[ $i ][ 0 ]?> <?=$tutors[ $i ][ 1 ]?></span></h4>
-                <div class="columns small-8">
-                <p>Times:</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Start time</th>
-                                <th>End time</th>
-                                <th>Class</th>
-                                <th>Day</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="columns small-4">
-                    <button type="button" class="button tut-edit-button">Edit time</button>
-                </div>
-            </div> -->
         </div>
-        <hr>
     </div>
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
-    <div class="schedule">
+    <div class="row schedule purple-background round full-width">
+        <h2 class="white">Schedule Preview</h2>
+        <?php echo buildTutoringSchedule( "./files/" ); ?>
     </div>
+    <div class="row"><img src="<?=$path?>/img/line.svg"></div>
 <?php
     include $path."footer.php";
 ?>
