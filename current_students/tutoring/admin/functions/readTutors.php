@@ -6,10 +6,13 @@
 	
 	if(!function_exists("readTutors"))
 	{
-		function readTutors($fileName)
+		function readTutors($path)
 		{
 			// Includes all necessary functions
 			include "sortTutors.php";	
+			
+			// Create the core file name
+			$fileName = $path . "tutors.csv";
 			
 			// Creates a 2D array to hold the tutor names
 			$tutors;
