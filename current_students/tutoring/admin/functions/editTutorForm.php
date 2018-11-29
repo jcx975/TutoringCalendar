@@ -23,12 +23,14 @@
 			$tutorForm = "<form action='savedEditTutorPage.php' method='POST'>"
 				. "<input type='hidden' name='oldFirstName' value='" . $tutor[0] . "'>"
 				. "<input type='hidden' name='oldLastName' value='" . trim($tutor[1]) . "'>";
+
+			$tutorForm .= "<div class='row'>";
 				
 			if(!$newTutor)
 			{
 				$tutorForm .= "<h3>Name</h3>"
-					. "<input type='text' name='firstName' value='" . $tutor[0] . "' required>"					
-					. "&nbsp<input type='text' name='lastName' value='" . trim($tutor[1]) . "' required><hr>";
+					. "<div class='small-6 columns'>First<input type='text' name='firstName' value='" . $tutor[0] . "' required></div>"					
+					. "<div class='small-6 columns'>Last<input type='text' name='lastName' value='" . trim($tutor[1]) . "' required></div><hr>";
 				
 				// Gets the events of the tutor
 				$events = readTutorEvents($fileName);
@@ -36,7 +38,7 @@
 				for($i=0;$i<count($events);$i++)
 				{
 					$tutorForm .= "<div class='" . $dayOfTheWeek[$i] . "'><h3>" . $dayOfTheWeek[$i]
-						. "</h3><button type='button'>Add Event</button><br>";
+						. "</h3><button type='button' class='button tut-addevent-button'>Add Event</button><br>";
 					
 					for($ii=0;$ii<count($events[$i]);$ii++)
 					{
@@ -50,17 +52,18 @@
 			else
 			{	
 				$tutorForm .= "<h3>Name</h3>"
-					. "<input type='text' name='firstName' required>"					
-					. "&nbsp<input type='text' name='lastName' required><hr>";
+					. "<div class='small-6 columns'>First<input type='text' name='firstName' required></div>"
+					. "<div class='small-6 columns'>Last<input type='text' name='lastName' required></div><hr>";
 				
 				for($i=0;$i<count($dayOfTheWeek);$i++)
 				{
 					$tutorForm .= "<div class='" . $dayOfTheWeek[$i] . "'><h3>" 
-						. $dayOfTheWeek[$i] . "</h3><button type='button'>Add Event</button><br></div><hr>";
+						. $dayOfTheWeek[$i] . "</h3><button type='button' class='button tut-addevent-button'>Add Event</button><br></div><hr>";
 				}
 			}
 			
 			$tutorForm .= "<input type='submit' value='Save Changes'><a href='index.php'>Return</a></form>";
+			$tutorForm .= "</div>";
 			
 			return $tutorForm;
 		}

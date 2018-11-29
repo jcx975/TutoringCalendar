@@ -44,10 +44,10 @@
 			// Creates the string of the form
 			$filledForm =
 				"<input type='hidden' name='day[]' value='" . $dayOfTheWeek . "'>"
-				. "Start time: <input type='number' name='start[]' min='1' max='12' value='" . $start ."' required>"
-				. "&nbsp<select name='startMod[]'>" . $selectStartAmPm
-				. "&nbspEnd time: <input type='number' name='end[]' min='1' max='12' value='" . $end . "' required>"
-				. "&nbsp<select name='endMod[]'>" . $selectEndAmPm . "<br>";
+				. "<div class='small-3 columns'>Start time: <input type='number' name='start[]' min='1' max='12' value='" . $start ."' required></div>"
+				. "<div class='small-3 columns'>AM/PM<select name='startMod[]'>" . $selectStartAmPm . "</div>"
+				. "<div class='small-3 columns'>End time: <input type='number' name='end[]' min='1' max='12' value='" . $end . "' required></div>"
+				. "<div class='small-3 columns'>AM/PM<select name='endMod[]'>" . $selectEndAmPm . "</div>";
 				
 			// Returns the form string
 			return $filledForm;

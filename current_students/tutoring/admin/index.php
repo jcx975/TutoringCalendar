@@ -27,7 +27,7 @@
     $path = "../../../";
     include $path."head1.html";    
 ?>
-	<link rel="stylesheet" type="text/css" href="../css/tableStyles.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../css/tableStyles.css"> -->
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/admin.js"></script>
@@ -44,8 +44,8 @@
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
 
     <div class="row full-width purple-background round">
-        <a href="buildTutoringPage.php" class="button tut-add-button float-right">Publish Changes</a>
-		<?php
+    <a href="buildTutoringPage.php" class="button tut-add-button float-right">Publish Changes</a>
+		<?php 
 			$editTutorString .= $editTutorStringP1 . "New" . $editTutorStringP2 . "Tutor" . $editTutorStringP3;
 			echo $editTutorString;
 		?>

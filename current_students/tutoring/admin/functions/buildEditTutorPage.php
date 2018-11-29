@@ -7,7 +7,7 @@
 	if(!function_exists("buildEditTutorPage"))
 	{
 		function buildEditTutorPage($path)
-		{	
+		{
 			// Includes all necessary functions
 			include "readTutors.php";
 			include "readTutorEvents.php";
@@ -60,7 +60,7 @@
 			}
 			
 			// String with the entire contents of the editTutor page
-			$editTutorPageContents = "<h1>Edit Tutor</h1><h2>" . $tutor[0] . " " . trim($tutor[1]) . "</h2>" . $tutorForm . $tutorSchedule;
+			$editTutorPageContents = "<div class='row'><h2>Editing <span class='tutor-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h2>" . $tutorForm . $tutorSchedule . "</div>";
 			
 			// Returns the string of the page contents
 			return $editTutorPageContents;

@@ -30,9 +30,9 @@
 			
 			// String to hold the block contents
 			$tutorBlock = "<div id='" . $tutor[0] . trim($tutor[1]) .
-				"' class='large-12 columns tutor-card shadow round'><span>"
-					. $editTutorString . "</a></span>"
-					. "<h4><span class='tut-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h4>"
+				"' class='large-12 columns tutor-card shadow round'>"
+					. $editTutorString . "</a>"
+					. "<h4><span class='tutor-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h4>"
 					. "<div class='columns small-12'>"
 					. $schedule . "</div></div>";
 			
