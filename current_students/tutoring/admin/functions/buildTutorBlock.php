@@ -11,19 +11,30 @@
 			include "readTutorEvents.php";
 			include "buildSchedule.php";
 			
+			$editTutorStringP1 = "<form action='editTutorPage.php' method='POST'>"
+				. "<input type='hidden' name='firstName' value='";
+			
+			$editTutorStringP2 = "'><input type='hidden' name='lastName' value='";
+			
+			$editTutorStringP3 = "'><input class='button tut-add-button float-right' type='submit' value='Edit tutor'></form>";
+			
+			$editTutorString = $editTutorStringP1 . $tutor[0] . $editTutorStringP2 . trim($tutor[1]) . $editTutorStringP3;
+			
 			$tutorEventsFileName = $path . $tutor[0] . trim($tutor[1]) . ".csv";
 			
 			$events = readTutorEvents($tutorEventsFileName);
 			$schedule = buildSchedule($events);
 			
+			// Old button
+			// <a href='./editTutors.php' class='button tut-edit-button float-right'>
+			
 			// String to hold the block contents
 			$tutorBlock = "<div id='" . $tutor[0] . trim($tutor[1]) .
-				"' class='large-12 columns tutor-card shadow round'>
-				<span>
-				<a href='./editTutors.php' class='button tut-edit-button float-right'>Edit</a></span>
-				<h4><span class='tut-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h4>
-				<div class='columns small-12'>" .
-				$schedule . "</div></div>";
+				"' class='large-12 columns tutor-card shadow round'><span>"
+					. $editTutorString . "</a></span>"
+					. "<h4><span class='tut-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h4>"
+					. "<div class='columns small-12'>"
+					. $schedule . "</div></div>";
 			
 			return $tutorBlock;
 		}

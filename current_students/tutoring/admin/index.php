@@ -1,14 +1,26 @@
-
 <?php
+	// Includes all necessary functions
     include "./functions/readTutors.php";
     include "./functions/buildTutoringSchedule.php";
     include "./functions/buildTutorBlock.php";
+	
+	// Gets the tutors array
     $tutors = readTutors( "./files/tutors.csv" );
+	
     $str = "";
     for ( $i = 0; $i < count( $tutors ); $i++ )
     {
         $str .= buildTutorBlock( $tutors[ $i ], "./files/" );
     }
+	
+	$editTutorString = "";
+	
+	$editTutorStringP1 = "<form action='editTutorPage.php' method='POST'>"
+			. "<input type='hidden' name='firstName' value='";
+			
+	$editTutorStringP2 = "'><input type='hidden' name='lastName' value='";
+			
+	$editTutorStringP3 = "'><input class='button tut-add-button float-right' type='submit' value='Add tutor'></form>";
 ?>
 
 <?php
@@ -32,7 +44,11 @@
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
 
     <div class="row full-width purple-background round">
-        <a href="./editTutors.php" class="button tut-add-button float-right">Add tutor</a>
+        <!--<a href="./editTutors.php" class="button tut-add-button float-right">Add tutor</a>-->
+		<?php 
+			$editTutorString .= $editTutorStringP1 . "New" . $editTutorStringP2 . "Tutor" . $editTutorStringP3;
+			echo $editTutorString;
+		?>
         <h2 class="white" id="title">Tutors</h2>
         <div class="large-12 columns">
             <?php

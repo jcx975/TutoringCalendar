@@ -1,0 +1,24 @@
+Things to do:
+
+Create an edit tutor page
+	* Needs to keep track of the name of the tutor
+	* Needs to check if tutor is in tutors.csv
+		- If so write contents to tutorEvents.csv
+		- If not delete tutorEvents.csv for previous name
+			then write contents to tutorEvents.csv
+			and remove old name from tutors.csv
+			and add new name to tutors.csv
+	* Needs to allow deleting a tutor
+
+
+Event Information
+	DayOfTheWeek
+	StartTime
+	EndTime
+	RoomNumber
+	Class
+	TutorFirstName
+	TutorLastName
+
+Form Building
+	
