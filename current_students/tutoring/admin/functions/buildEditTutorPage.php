@@ -7,9 +7,7 @@
 	if(!function_exists("buildEditTutorPage"))
 	{
 		function buildEditTutorPage($path)
-		{
-			echo $_POST["firstName"] . " " . $_POST["lastName"] . "<hr>";
-			
+		{	
 			// Includes all necessary functions
 			include "readTutors.php";
 			include "readTutorEvents.php";

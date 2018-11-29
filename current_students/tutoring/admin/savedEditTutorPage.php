@@ -11,17 +11,9 @@
 	// Updates the file information with saved information
 	$postResult = savedEditTutorSubmission();
 	
-	if($postResult)
-	{
-		// Gets the editTutorPage contents
-		$contents = buildEditTutorPage("files/");
-		
-		// Displays the page
-		echo $contents;
-	}
-	else
-	{
-		echo "<p>Tutor was not added. Please include at least one event tutoring event to add a tutor</p><br>"
-			. "<a href='index.php'>Return</a>";
-	}
+	// Gets the editTutorPage contents
+	$contents = buildEditTutorPage("files/");
+	
+	// Displays the page
+	echo $contents;
 ?>

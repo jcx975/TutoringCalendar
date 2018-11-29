@@ -10,6 +10,7 @@
 		function savedEditTutorSubmission()
 		{
 			// Includes all necessary functions
+			include "readTutors.php";
 			include "writeTutorEvents.php";
 			include "deleteTutor.php";
 			include "addTutor.php";
@@ -45,21 +46,38 @@
 			$firstName = trim($firstName);
 			$lastName = trim($lastName);			
 			
-			// Checks if the tutors name was changed
-			if((!(($firstName==$oldFirstName)&&($lastName==$oldLastName)))&&($receivedPOST))
+			// Makes an array for the old and new name
+			$oldTutorName = array($oldFirstName,$oldLastName);
+			$newTutorName = array($firstName,$lastName);
+			
+			// Boolean to check if new tutor or not
+			$newTutor = TRUE;
+			
+			// Gets the tutors
+			$tutors = readTutors("files/tutors.csv");
+			
+			// Checks if tutor is a new tutor
+			for($i=0;$i<count($tutors);$i++)
 			{
-				// Makes an array for the old and new name
-				$oldTutorName = array($oldFirstName,$oldLastName);
-				$newTutorName = array($firstName,$lastName);
-				
-				// Deletes the files of the old name
-				deleteTutor($oldTutorName);
+				if(($tutors[$i][0]==$oldFirstName)&&(trim($tutors[$i][1])==$oldLastName))
+				{
+					$newTutor = FALSE;
+				}
+			}
+			
+			// Checks if the tutors name was changed
+			if(!(($firstName==$oldFirstName)&&($lastName==$oldLastName)))
+			{
+				if(!$newTutor)
+				{
+					// Deletes the files of the old name
+					deleteTutor($oldTutorName);
+				}
 				
 				// Adds new tutor nd files with new name
 				addTutor($newTutorName);
-				
-				// Writes the events
 			}
+				
 			
 			if($receivedPOST)
 			{

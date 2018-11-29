@@ -44,8 +44,8 @@
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
 
     <div class="row full-width purple-background round">
-        <!--<a href="./editTutors.php" class="button tut-add-button float-right">Add tutor</a>-->
-		<?php 
+        <a href="buildTutoringPage.php" class="button tut-add-button float-right">Publish Changes</a>
+		<?php
 			$editTutorString .= $editTutorStringP1 . "New" . $editTutorStringP2 . "Tutor" . $editTutorStringP3;
 			echo $editTutorString;
 		?>
