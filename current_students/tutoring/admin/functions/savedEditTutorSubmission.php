@@ -85,6 +85,18 @@
 				writeTutorEvents($day,$start,$startMod,$end,$endMod,$firstName,$lastName);
 			}
 			
+			// Needed in order to delete all events from a tutor
+			// without deleting that tutor.
+			if ( !( $receivedPOST || $newTutor ) )
+			{
+				$fileName = "files/" . $firstName . $lastName . ".csv";
+				$file = fopen( $fileName, "w" );
+				if ( !$file )
+					die( "Unable to open ${fileName}" );
+				
+				fwrite( $file, "" );
+				fclose( $file );
+			}
 			// Returns whether or not the POST data was received properly
 			return $receivedPOST;
 		}

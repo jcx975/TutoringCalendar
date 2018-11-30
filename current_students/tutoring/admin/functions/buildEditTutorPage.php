@@ -60,7 +60,7 @@
 			}
 			
 			// String with the entire contents of the editTutor page
-			$editTutorPageContents = "<div class='row'><h2>Editing <span class='tutor-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h2>" . $tutorForm . $tutorSchedule . "</div>";
+			$editTutorPageContents = "<div class='row'><h2>Editing <span class='tutor-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h2><a href='index.php'>Return</a>" . $tutorForm . $tutorSchedule . "</div>";
 			
 			// Returns the string of the page contents
 			return $editTutorPageContents;

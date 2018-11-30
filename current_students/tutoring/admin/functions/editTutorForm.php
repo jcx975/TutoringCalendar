@@ -62,7 +62,7 @@
 				}
 			}
 			
-			$tutorForm .= "<input type='submit' value='Save Changes'><a href='index.php'>Return</a></form>";
+			$tutorForm .= "<input type='submit' value='Save Changes'></form>";
 			$tutorForm .= "</div>";
 			
 			return $tutorForm;

@@ -40,6 +40,15 @@
     border: 5px solid purple;
 }
 
+.tut-deleteevent-button {
+    /* background: red; */
+    color: red;
+}
+
+.tut-deleteevent-button {
+    cursor: pointer;
+}
+
 .tutor-search {
     display: block;
     padding: 8px 16px;
