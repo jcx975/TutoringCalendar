@@ -43,7 +43,7 @@
 					for($ii=0;$ii<count($events[$i]);$ii++)
 					{
 						$tutorForm .= filledEventForm($events[$i][$ii][0],$events[$i][$ii][1],
-							$events[$i][$ii][2],$events[$i][$ii][3],$events[$i][$ii][4]);
+							$events[$i][$ii][2],$events[$i][$ii][3],trim($events[$i][$ii][4]));
 					}
 					
 					$tutorForm .= "</div><hr>";
@@ -57,7 +57,7 @@
 				
 				for($i=0;$i<count($dayOfTheWeek);$i++)
 				{
-					$tutorForm .= "<div class='" . $dayOfTheWeek[$i] . "'><h3>" 
+					$tutorForm .= "<div id='" . $dayOfTheWeek[$i] . "'><h3>" 
 						. $dayOfTheWeek[$i] . "</h3><button type='button' class='button tut-addevent-button'>Add Event</button><br></div><hr>";
 				}
 			}
