@@ -42,9 +42,15 @@
         </div>    
     </div>
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
-
+    <div class="row">
+        <div class="large-12 columns">
+            <a href="buildTutoringPage.php" class="button tut-publish-button">Publish Changes</a>
+        </div>
+    </div>
+    <div>
+        <input class="tutor-search" type="search" placeholder="Search by name">
+    </div>
     <div class="row full-width purple-background round">
-    <a href="buildTutoringPage.php" class="button tut-add-button float-right">Publish Changes</a>
 		<?php 
 			$editTutorString .= $editTutorStringP1 . "New" . $editTutorStringP2 . "Tutor" . $editTutorStringP3;
 			echo $editTutorString;

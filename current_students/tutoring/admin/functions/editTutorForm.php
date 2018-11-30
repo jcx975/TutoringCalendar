@@ -37,7 +37,7 @@
 				
 				for($i=0;$i<count($events);$i++)
 				{
-					$tutorForm .= "<div class='" . $dayOfTheWeek[$i] . "'><h3>" . $dayOfTheWeek[$i]
+					$tutorForm .= "<div id='" . $dayOfTheWeek[$i] . "'><h3>" . $dayOfTheWeek[$i]
 						. "</h3><button type='button' class='button tut-addevent-button'>Add Event</button><br>";
 					
 					for($ii=0;$ii<count($events[$i]);$ii++)
