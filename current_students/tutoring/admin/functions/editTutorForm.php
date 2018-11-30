@@ -30,7 +30,8 @@
 			{
 				$tutorForm .= "<h3>Name</h3>"
 					. "<div class='small-6 columns'>First<input type='text' name='firstName' value='" . $tutor[0] . "' required></div>"					
-					. "<div class='small-6 columns'>Last<input type='text' name='lastName' value='" . trim($tutor[1]) . "' required></div><hr>";
+					. "<div class='small-6 columns'>Last<input type='text' name='lastName' value='" . trim($tutor[1]) . "' required></div>"
+					. "<div class='small-12 columns'>Email:<input type='text' name='email' value=''></div><hr>";
 				
 				// Gets the events of the tutor
 				$events = readTutorEvents($fileName);

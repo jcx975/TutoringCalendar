@@ -43,11 +43,14 @@
 				
 			// Creates the string of the form
 			$filledForm =
-				"<div class='row event-row'><input type='hidden' name='day[]' value='" . $dayOfTheWeek . "'>"
-				. "<div class='small-3 columns'>Start time: <input type='number' name='start[]' min='1' max='12' value='" . $start ."' required></div>"
-				. "<div class='small-3 columns'>AM/PM<select name='startMod[]'>" . $selectStartAmPm . "</div>"
-				. "<div class='small-3 columns'>End time: <input type='number' name='end[]' min='1' max='12' value='" . $end . "' required></div>"
-				. "<div class='small-3 columns'>AM/PM<select name='endMod[]'>" . $selectEndAmPm . "</div>"
+				"<div class='row event-row shadow'><input type='hidden' name='day[]' value='" . $dayOfTheWeek . "'>"
+				. "<div class='medium-2 columns'>Start time: <input type='number' name='start[]' min='1' max='12' value='" . $start ."' required></div>"
+				. "<div class='medium-2 columns'>AM/PM<select name='startMod[]'>" . $selectStartAmPm . "</div>"
+				. "<div class='medium-2 columns'>End time: <input type='number' name='end[]' min='1' max='12' value='" . $end . "' required></div>"
+				. "<div class='medium-2 columns'>AM/PM<select name='endMod[]'>" . $selectEndAmPm . "</div>"
+				. "<div class='medium-3 columns'>Location:<input type='text' name='location' required></div>"
+				. "<div class='medium-2 columns'>Class:<input type='number' name='class' min='101' max='999' placeholder='e.g. \"234\"' required></div>"
+				. "<div class='medium-10 columns'>Comments:<textarea name='comments' rows='5'></textarea></div>"
 				. "<span class='tut-deleteevent-button red'>&times;</span></div>";
 				
 			// Returns the form string

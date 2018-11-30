@@ -32,6 +32,12 @@
     border-radius: 20px;
 }
 
+.event-row {
+    margin-bottom: 20px;
+    background: whitesmoke;
+    border:1px solid gray;
+}
+
 .tut-publish-button {
     background: green;
     display: block;
@@ -43,10 +49,13 @@
 .tut-deleteevent-button {
     /* background: red; */
     color: red;
+    display: inline-block;
+    font-size: 24pt;
 }
 
-.tut-deleteevent-button {
+.tut-deleteevent-button:hover {
     cursor: pointer;
+    border: 1px solid gray;
 }
 
 .tutor-search {
