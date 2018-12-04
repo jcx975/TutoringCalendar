@@ -41,43 +41,43 @@
 					{
 						// Creates a div element with the start and end time displayed for each event
 						case "Sunday":
-							$sunString .= "<div>Start Time: " . $events[$i][$ii][1]
+							$sunString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
 								. $events[$i][$ii][2]
 								. "<br>End Time: " . $events[$i][$ii][3]
 								. $events[$i][$ii][4] . "</div><hr>";
 							break;
 						case "Monday":
-							$monString .= "<div>Start Time: " . $events[$i][$ii][1]
+							$monString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
 								. $events[$i][$ii][2]
 								. "<br>End Time: " . $events[$i][$ii][3]
 								. $events[$i][$ii][4] . "</div><hr>";
 							break;
 						case "Tuesday":
-							$tueString .= "<div>Start Time: " . $events[$i][$ii][1]
+							$tueString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
 								. $events[$i][$ii][2]
 								. "<br>End Time: " . $events[$i][$ii][3]
 								. $events[$i][$ii][4] . "</div><hr>";
 							break;
 						case "Wednesday":
-							$wedString .= "<div>Start Time: " . $events[$i][$ii][1]
+							$wedString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
 								. $events[$i][$ii][2]
 								. "<br>End Time: " . $events[$i][$ii][3]
 								. $events[$i][$ii][4] . "</div><hr>";
 							break;
 						case "Thursday":
-							$thuString .= "<div>Start Time: " . $events[$i][$ii][1]
+							$thuString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
 								. $events[$i][$ii][2]
 								. "<br>End Time: " . $events[$i][$ii][3]
 								. $events[$i][$ii][4] . "</div><hr>";
 							break;
 						case "Friday":
-							$friString .= "<div>Start Time: " . $events[$i][$ii][1]
+							$friString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
 								. $events[$i][$ii][2]
 								. "<br>End Time: " . $events[$i][$ii][3]
 								. $events[$i][$ii][4] . "</div><hr>";
 							break;
 						case "Saturday":
-							$satString .= "<div>Start Time: " . $events[$i][$ii][1]
+							$satString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
 								. $events[$i][$ii][2]
 								. "<br>End Time: " . $events[$i][$ii][3]
 								. $events[$i][$ii][4] . "</div><hr>";
