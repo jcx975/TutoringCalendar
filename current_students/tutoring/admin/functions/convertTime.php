@@ -11,7 +11,7 @@
 			$convertedTime;
 			
 			// Checks if the time is AM
-			if(trim($mod)==trim("am")
+			if($mod=="am")
 			{
 				// If it is 12 AM then it sets the time to 24
 				if($time==12)
@@ -39,17 +39,17 @@
 			}
 			
 			// Adds the minutes past the hour
-			if(trim($increment)==trim("15"))
+			if($increment=="15")
 			{
-				$convertTime += .25;
+				$convertedTime += .25;
 			}
-			else if(trim($increment)==trim("30"))
+			else if($increment=="30")
 			{
-				$convertTime += .5;
+				$convertedTime += .5;
 			}
-			else if(trim($increment)==trim("45"))
+			else if($increment=="45")
 			{
-				$convertTime += .75;
+				$convertedTime += .75;
 			}
 			
 			// Returns the converted time

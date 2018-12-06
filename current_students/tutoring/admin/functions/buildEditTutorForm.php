@@ -44,7 +44,7 @@
 				for($i=0;$i<count($dayOfTheWeek);$i++)
 				{
 					$editTutorForm .= "<div id='" . $dayOfTheWeek[$i] . "'><h3>" 
-						. $dayOfTheWeek[$i] . "</h3><button type='button' class='button tut-addevent-button'>Add Event</button><br><hr>";
+						. $dayOfTheWeek[$i] . "</h3><button type='button' class='button tut-addevent-button'>Add Event</button><br></div><hr>";
 				}
 			}
 			
