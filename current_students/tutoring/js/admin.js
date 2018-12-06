@@ -19,16 +19,24 @@ function addEventButtonClicked( button )
 	var dayString = button.parent().attr( "id" );
 	var dayDiv = button.parent();
 	var row = "";
-	row += "<div class='row event-row shadow'><input type='hidden' name='day[]' value='" + dayString + "'>";
-	row += "<div class='medium-2 columns'>Start time: <input type='number' name='start[]' min='1' max='12' value='' required></div>";
-	row += "<div class='medium-2 columns'><input type='number' name='startIncrement[]' min='00' max='45' step='15' value='' required></div>";
-	row += "<div class='medium-2 columns'>AM/PM<select name='startMod[]'><option value='am' selected>AM</option><option value='pm'>PM</option></select></div>";
-	row += "<div class='medium-2 columns'>End time: <input type='number' name='end[]' min='1' max='12' value='' required></div>";
-	row += "<div class='medium-2 columns'><input type='number' name='endIncrement[]' min='00' max='45' step='15' value='' required></div>";
-	row += "<div class='medium-2 columns'>AM/PM<select name='endMod[]'><option value='am' selected>AM</option><option value='pm'>PM</option></select></div>";
-	row += "<div class='medium-3 columns'>Location:<input type='text' name='location[]' required></div>";
-	row += "<div class='medium-2 columns'>Class:<input type='number' name='class[]' min='101' max='999' placeholder='e.g. \"234\"' required></div>";
-	row += "<div class='medium-10 columns'>Comments:<textarea name='comments[]' rows='5'></textarea></div>";
+	row += "<div class='row event-row shadow'><input type='hidden' form='save' name='day[]' value='" + dayString + "'>";
+	row += "<div class='medium-2 columns'>Start time: <input type='number' form='save' name='start[]' min='1' max='12' value='' required></div>";
+	row += "<div class='medium-2 columns'>Minutes<select form='save' name='startIncrement[]'><option value='00'>00</option>"
+				+ "<option value='15'>15</option>"
+				+ "<option value='30'>30</option>"
+				+ "<option value='45'>45</option>"
+				+ "</select></div>";
+	row += "<div class='medium-2 columns'>AM/PM<select name='startMod[]' form='save'><option value='am' selected>AM</option><option value='pm'>PM</option></select></div>";
+	row += "<div class='medium-2 columns'>End time: <input type='number' form='save' name='end[]' min='1' max='12' value='' required></div>";
+	row += "<div class='medium-2 columns'>Minutes<select form='save' name='endIncrement[]'><option value='00'>00</option>"
+				+ "<option value='15'>15</option>"
+				+ "<option value='30'>30</option>"
+				+ "<option value='45'>45</option>"
+				+ "</select></div>";
+	row += "<div class='medium-2 columns'>AM/PM<select form='save' name='endMod[]'><option value='am' selected>AM</option><option value='pm'>PM</option></select></div>";
+	row += "<div class='medium-3 columns'>Location:<input type='text' form='save' name='location[]' required></div>";
+	row += "<div class='medium-2 columns'>Class:<input type='number' form='save' name='class[]' min='101' max='999' placeholder='e.g. \"234\"' required></div>";
+	row += "<div class='medium-10 columns'>Comments:<textarea form='save' name='comments[]' rows='5'></textarea></div>";
 	row += "<span class='tut-deleteevent-button red'>&times;</span></div>";
 	dayDiv.append( row );
 	dayDiv.find( ".tut-deleteevent-button" ).off( "click" ).on( "click", deleteEventButtonClicked );
