@@ -31,8 +31,8 @@
 		
 	$deleteAll = "<form action='deletingAll.php' method='POST'>"
 		. "<input class='button tut-add-button float-right' type='submit' value='Delete All Tutors'></form>";
-	
-	$allBlocks .= $deleteAll . $addTutor;
+		
+	$tutorButtons = $addTutor . $deleteAll;
 	
 	for($i=0;$i<count($tutors);$i++)
 	{
@@ -87,7 +87,10 @@
         <input class="tutor-search" type="search" placeholder="Search by name">
     </div>
     <div class="row full-width purple-background round">
-        <h2 class="white" id="title">Tutors</h2>
+		<?php
+			echo $tutorButtons;
+		?>    
+		<h2 class="white" id="title">Tutors</h2>
         <div class="large-12 columns">
             <?php
                 echo $allBlocks;
