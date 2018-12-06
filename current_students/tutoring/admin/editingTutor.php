@@ -6,6 +6,12 @@
 	// to complete event writing before returning to the edit tutor page
 	//
 	
+	// Starts the session to allow confirmation messages
+	session_start();
+	
+	// Adds confirmation message to the SESSION
+	$_SESSION["confirmEditTutor"] = "Changes have been saved";
+	
 	// Includes all necessary functions
 	include "functions/saveEditTutorChanges.php";
 	

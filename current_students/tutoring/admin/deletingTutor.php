@@ -6,6 +6,12 @@
 	// They will be redirected back to the main admin page
 	//
 	
+	// Starts the session to allow confirmation messages
+	session_start();
+	
+	// Adds confirmation message to the SESSION
+	$_SESSION["confirmDeleteTutor"] = "Tutor has been deleted";	
+	
 	// Includes all necessary functions
 	include "functions/deleteTutor.php";
 	

@@ -6,15 +6,8 @@
 	//
 	
 	// Starts the session to allow confirmation messages
-	session_start();
-	
-	// Checks if there was a confirmation message sent
-	if(isset($_SESSION["confirmEditTutor"]))
-	{
-		echo $_SESSION["confirmEditTutor"];
-		unset($_SESSION["confirmEditTutor"]);
-	}
-	
+	session_start();	
+
 	// Includes all necessary functions
 	include "functions/readTutors.php";
 	include "functions/buildTutorBlock.php";
@@ -57,6 +50,25 @@
     <script src="../js/admin.js"></script>
 <?php
     include $path."head2.php"; 
+	
+	// Checks if there was a confirmation message sent
+	if(isset($_SESSION["confirmEditTutor"]))
+	{
+		echo $_SESSION["confirmEditTutor"];
+		unset($_SESSION["confirmEditTutor"]);
+	}
+	
+	if(isset($_SESSION["confirmDeleteTutor"]))
+	{
+		echo $_SESSION["confirmDeleteTutor"];
+		unset($_SESSION["confirmDeleteTutor"]);
+	}
+
+	if(isset($_SESSION["confirmDeleteAll"]))
+	{
+		echo $_SESSION["confirmDeleteAll"];
+		unset($_SESSION["confirmDeleteAll"]);
+	}
 ?>
 
     <div class="banner row">

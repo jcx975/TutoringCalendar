@@ -3,6 +3,12 @@
 	// Deletes all tutors and their files performing a full refresh of all tutoring data
 	//
 
+	// Starts the session to allow confirmation messages
+	session_start();
+	
+	// Adds confirmation message to the SESSION
+	$_SESSION["confirmDeleteAll"] = "All tutors have been deleted";	
+	
 	// Includes all necessary functions
 	include "functions/readTutors.php";
 	include "functions/deleteTutor.php";
