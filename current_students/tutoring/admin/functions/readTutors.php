@@ -1,30 +1,27 @@
 <?php
 	//
-	// Takes a file with each tutors name as the argument
-	// and returns an array of the names
+	// Returns a sorted array of all tutors and their information
 	//
 	
 	if(!function_exists("readTutors"))
 	{
-		function readTutors($fileName)
+		function readTutors()
 		{
 			// Includes all necessary functions
-			include "sortTutors.php";	
+			include "sortTutors.php";
 			
-			// Create the core file name
+			// Array to hold all tutors an their information
+			$tutors = array();
 			
-			
-			// Creates a 2D array to hold the tutor names
-			$tutors;
-			
-			// Attempts to open the file given as the argument
+			// Opens the tutors.csv file
+			$fileName = "files/tutors.csv";
 			$file = fopen($fileName,"r");
 			if(!$file)
 			{
 				die("Unable to open $fileName");
 			}
 			
-			// Iterates through the entire file and saves the name in the array
+			// Reads file contents into array "tutors"
 			while(!feof($file))
 			{
 				$line = fgets($file);
@@ -35,13 +32,22 @@
 			// Closes the file
 			fclose($file);
 			
-			// Since the file ends in an empty line this removes that last empty line
+			// Removes the last line in the file as it is an empty line with no tutor information
 			unset($tutors[count($tutors)-1]);
 			
-			// Sorts the array alphabetically by last name then first
+			// Trims all white spaces and new line characters from the array
+			for($i=0;$i<count($tutors);$i++)
+			{
+				for($ii=0;$ii<count($tutors[$i]);$ii++)
+				{
+					$tutors[$i][$ii] = trim($tutors[$i][$ii]);
+				}
+			}
+			
+			// Sorts the array based on last name then first name
 			usort($tutors,"sortTutors");
 			
-			// Returns the sorted tutors array
+			// Returns the "tutors" array
 			return $tutors;
 		}
 	}

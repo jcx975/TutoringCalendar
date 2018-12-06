@@ -1,25 +1,26 @@
 <?php
 	//
-	// Function to build a schedule using a sorted events array.
-	// Outputs schedule as a string of an HTML table.
+	// Takes an events array as an argument and returns a schedule as a string
+	// Each event will display the start time, end time, location, class, and tutor name
+	// Each event will be separated by a horizontal line
 	//
 	
 	if(!function_exists("buildSchedule"))
 	{
-		function buildSchedule($events)
+		function buildSchedule($events,$tutorSchedule = FALSE)
 		{
 			// Creates a string with the first half of the schedule
-			$schedule = "<table>
-				<tr>
-					<th>Sunday</th>
-					<th>Monday</th>
-					<th>Tuesday</th>
-					<th>Wednesday</th>
-					<th>Thursday</th>
-					<th>Friday</th>
-					<th>Saturday</th>
-				</tr>
-				<tr>";
+			$schedule = "<table>"
+				. "<tr>"
+				.	"<th>Sunday</th>"
+				.	"<th>Monday</th>"
+				.	"<th>Tuesday</th>"
+				.	"<th>Wednesday</th>"
+				.	"<th>Thursday</th>"
+				.	"<th>Friday</th>"
+				.	"<th>Saturday</th>"
+				. "</tr>"
+				. "<tr>";
 			
 			// Creates the strings for each cell in the table
 			$sunString = "<td>";
@@ -30,63 +31,65 @@
 			$friString = "<td>";
 			$satString = "<td>";
 			
-			// Iterates through the array of days
+			// Starts on Sunday and then the all following days
 			for($i=0;$i<count($events);$i++)
 			{
-				// Iterates through the arrays of the current day
+				// Starts on the first event of the current day
 				for($ii=0;$ii<count($events[$i]);$ii++)
 				{
-					// Checks the day of each array of the current day in a switch
-					switch ($events[$i][$ii][0])
+					// Turns the current event into a string
+					if($tutorSchedule)
 					{
-						// Creates a div element with the start and end time displayed for each event
+						// If the schedule is for an individual tutor it will not include the tutor name in the schedule
+						$tempString = "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
+							. ":" . $events[$i][$ii][2] . $events[$i][$ii][3]
+							. "<br>End Time: " . $events[$i][$ii][4] . ":" . $events[$i][$ii][5]
+							. $events[$i][$ii][6] . "<br>Location: " . $events[$i][$ii][7]
+							. "<br>Class: " . $events[$i][$ii][8]
+							. "</div><hr>";
+					}
+					else
+					{
+						// If the schedule is not for an individual tutor it will include the tutor name in the schedule
+						$tempString = "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
+							. ":" . $events[$i][$ii][2] . $events[$i][$ii][3]
+							. "<br>End Time: " . $events[$i][$ii][4] . ":" . $events[$i][$ii][5]
+							. $events[$i][$ii][6] . "<br>Location: " . $events[$i][$ii][7]
+							. "<br>Class: " . $events[$i][$ii][8]
+							. "<br>Tutor: " . $events[$i][$ii][9] . " " . $events[$i][$ii][10]
+							. "</div><hr>";
+					}
+					
+					// Checks the day of the current event
+					switch ($events[$i][$ii][0])
+					{	
+						// Appends the event string to the matching day string
 						case "Sunday":
-							$sunString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
-								. $events[$i][$ii][2]
-								. "<br>End Time: " . $events[$i][$ii][3]
-								. $events[$i][$ii][4] . "</div><hr>";
+							$sunString .= $tempString;
 							break;
 						case "Monday":
-							$monString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
-								. $events[$i][$ii][2]
-								. "<br>End Time: " . $events[$i][$ii][3]
-								. $events[$i][$ii][4] . "</div><hr>";
+							$monString .= $tempString;
 							break;
 						case "Tuesday":
-							$tueString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
-								. $events[$i][$ii][2]
-								. "<br>End Time: " . $events[$i][$ii][3]
-								. $events[$i][$ii][4] . "</div><hr>";
+							$tueString .= $tempString;
 							break;
 						case "Wednesday":
-							$wedString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
-								. $events[$i][$ii][2]
-								. "<br>End Time: " . $events[$i][$ii][3]
-								. $events[$i][$ii][4] . "</div><hr>";
+							$wedString .= $tempString;
 							break;
 						case "Thursday":
-							$thuString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
-								. $events[$i][$ii][2]
-								. "<br>End Time: " . $events[$i][$ii][3]
-								. $events[$i][$ii][4] . "</div><hr>";
+							$thuString .= $tempString;
 							break;
 						case "Friday":
-							$friString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
-								. $events[$i][$ii][2]
-								. "<br>End Time: " . $events[$i][$ii][3]
-								. $events[$i][$ii][4] . "</div><hr>";
+							$friString .= $tempString;
 							break;
 						case "Saturday":
-							$satString .= "<div class='calendar-event'>Start Time: " . $events[$i][$ii][1]
-								. $events[$i][$ii][2]
-								. "<br>End Time: " . $events[$i][$ii][3]
-								. $events[$i][$ii][4] . "</div><hr>";
+							$satString .= $tempString;
 							break;
 					}
 				}
 			}
 			
-			// Closes the table data tag for each cell
+			// Closes the table data tag for each day
 			$sunString .= "</td>";
 			$monString .= "</td>";
 			$tueString .= "</td>";
@@ -95,7 +98,7 @@
 			$friString .= "</td>";
 			$satString .= "</td>";
 			
-			// Fills in the second row with each days cells
+			// Fills in the second row with each days string
 			$schedule .= $sunString . $monString . $tueString . $wedString .
 				$thuString. $friString . $satString . "</tr></table>";
 			

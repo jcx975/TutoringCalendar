@@ -1,37 +1,152 @@
-This documentation is an easy way to learn the purpose of each function in this folder
-
-blankEventForm.php
-	This function takes a day of the week and returns a blank event form.
-buildAdminPage.php
-	This function performs all the steps needed to display the admin page.
-	It makes all temp files equal to the core files to ensure only intended
-	changes are made by the user. It reads the tutors.csv to get a list of
-	all tutors and make a block containing their event information. It writes
-	the events.csv file using each individual tutorEvents.csv file. It reads
-	the events.csv file and then makes a schedule with that to produce a preview
-	of what the schedule will appear as for the students.
+=======================================================================================================
+This text document includes information about the different functions in this file,
+including their arguments, return values, and purpose.
+=======================================================================================================
+buildEditTutorForm.php
+	Arguments:
+		tutors - array
+			This is an array of all the tutors and their information.
+		newTutor - boolean
+			This is a boolean which is true if the current tutor is
+			a new tutor being added from the add tutor button.
+	Return:
+		editTutorForm - string
+			This is a string containing the entire edit tutor form.
+			The form will be filled in with default values if the
+			tutor already exists.
+	Purpose:
+		This function is used to build the form that the user will interact
+		with when trying to add, remove, and edit tutor event information.
+buildEditTutorPage.php
+	Arguments:
+		NONE
+	Return:
+		editTutorPageContents - string
+			This is a string of the entire edit tutor page contents including
+			form, schedule, and title.
+	Purpose:
+		This function is used to build the edit tutor page in accordance with the
+		current tutor being edited whether that be a new tutor or existing one.
 buildSchedule.php
-	This function takes the events array and converts it into a HTML approriate
-	table in the form of a string.
-buildTutorBlock.php
-	This function takes a tutor and a path as an argument and builds a block
-	with the tutors name and schedule all within a div tag with an id equal
-	to their first and last name no spaces. Returns the string of this block.
-buildTutoringSchedule.php
-	This function reads the tutor list, builds the events.csv file
-	and then reads that file and builds the events schedule.
-compareStart.php
-	This function is used to sort the events based upon start time.
-filledEventForm.php
-	This function takes the content of a single event and returns a
-	form for an event with the content already filled in.
+	Arguments:
+		events - array
+			This is an events array, it is a 3D array containing
+			tutoring events split by day and sorted by time.
+		tutorSchedule - boolean (default FALSE)
+			This is a boolean used to determine if the schedule
+			is being built for a indiviudal tutor or not.
+			Will remove the tutor name from the schedule if TRUE.
+	Return:
+		schedule - string
+			This is a string containing the schedule in an HTML table.
+	Purpose:
+		This function is used to build a schedule based upon the given
+		event information, it is used for the main admin page, the tutoring
+		blocks, the edit tutor pages, and the public tutoring page.
+buildTutorBlock.phh
+	Arguments:
+		tutor - array
+			This is an array of a single tutor including their name
+			and any additonal information such as email.
+	Return:
+		tutorBlock - string
+			This string is the entire contents of a single tutor block.
+	Purpose:
+		This function is used to build a tutor block specific to the given
+		tutor. It includes a delete button and edit tutor button both of
+		which are form submits with hidden information containing the
+		tutors information.
+convertTime.php
+	Arguments:
+		time - int
+			This is the time that needs converting.
+		increment - string
+			This string can either be "00", "15", "30", or "45"
+			and is the minutes for the time.
+		mod - string
+			This string can either be "am" or "pm" and is the
+			am or pm modifier for the time.
+	Return:
+		convertedTime - int
+			This is the time after converting it into 24 hour time.
+	Purpose:
+		This function is used to convert a 12 hour time into a 24 hour
+		time format to allow for accurate and simple time based sorting.
+deleteTutor.php
+	Arguments:
+		tutor - array
+			This is an array of a single tutor including their name.
+	Return:
+		NONE
+	Purpose:
+		This function is used to delete a tutor from the data base, removing
+		it from the tutors.csv file and deleting its events file.
+fillEventForm.php
+	Arguments:
+		All event information except the name of the tutor - varies
+			These variables are all used to fill in the information
+			of the form with default values.
+	Return:
+		filledForm - string
+			This is a string of a filled formed for a single event.
+	Purpose:
+		This function is used to build as many chunck of the form for a single
+		event as needed for the tutor. They are added to the whole form in the
+		buildEditTutorForm.php file.
 readEvents.php
-	This function reads the events.csv and returns a sorted events array.
-readTutorEvents.php
-	This function reads the tutorEvents.csv and returns a sorted events array.
+	Arguments:
+		fileName - string
+			This is the name of the file to read from.
+	Return:
+		events - array
+			This is a 3D array of events from the file.
+	Purpose:
+		This function is used to read the events from a file and get them
+		into the proper array format and sort them according to time.
 readTutors.php
-	This function reads the tutors.csv and returns a sorted tutors array.
+	Arguments:
+		NONE
+	Return:
+		tutors - array
+			This is an array of all the tutors and their information.
+	Purpose:
+		This function is used to read from the tutors.csv file and
+		get the information into an array fur use in other parts of the website.
+sortEvents.php
+	Arguments:
+		x - array
+			This is the array of the first event to compare.
+		y - array
+			this is the array of the second event to compare.
+	Return:
+		-,0,+ - int
+			A positive number means the first event is later, a
+			negative number means it is earlier, and 0 means
+			they are at the same time.
+	Purpose:
+		This function is used to sort the events arrays when they are
+		read using readEvents.php.
 sortTutors.php
-	This function is used to sort the tutors based upon last then first name.
-writeEvents.php
-	This function writes the events.csv file based upon the tutorEvents.csv files.
+	Arguments:
+		x - array
+			This is the array of the first tutor.
+		y - array
+			This is the array of the second tutor.
+	Return:
+		-,0,+ - int
+			A positive number means the first tutor is later in
+			the alphabet, a negative number means the first tutor
+			is earlier in the alphabet, and a 0 means they are both
+			the same name.
+	Purpose:
+		This function is used to sort the tutors when they are read in
+		the readTutors.php function.
+writeTutor.php
+	Arguments:
+		tutors - array
+			This is an array of tutors including their name and additonal
+			information such as emails.
+	Return:
+		NONE
+	Purpose:
+		This function is used to write an array of tutors to the tutors.csv file.

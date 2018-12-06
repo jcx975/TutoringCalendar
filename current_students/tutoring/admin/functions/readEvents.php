@@ -1,16 +1,17 @@
 <?php
 	//
-	// Function to read the events.csv file and turn it into
-	// an array sorted by day of week then start time
+	// Takes a file to read from as an argument and sorts its contents into an array
+	// The array is split by day of the week, then sorted by start and end time
 	//
+	
 	if(!function_exists("readEvents"))
 	{
 		function readEvents($fileName)
 		{
 			// Includes all necessary functions
-			include "compareStart.php";
+			include "sortEvents.php";
 			
-			// 3D array to contain each element seperated by day of the week
+			// 3D array to contain each event separated by day of the week
 			$events = array (array(),array(),array(),array(),array(),array(),array());
 			
 			// Attempts to open the file
@@ -20,13 +21,13 @@
 				die("Unable to open $fileName");
 			}
 			
-			// Iterates through each line of the file
+			// Reads the files contents into array "events"
 			while(!feof($file))
 			{
 				$line = fgets($file);
 				$array = explode(";",$line);
 				
-				// Separates the lines based upon day of the week
+				// Sorts the events into the correct day of the week
 				switch($array[0])
 				{
 					case "Sunday":
@@ -56,10 +57,22 @@
 			// Closes the file
 			fclose($file);
 			
-			// Sorts the event for each day of the week based on start time
+			// Trims all white spaces and new line characters from the array
 			for($i=0;$i<count($events);$i++)
 			{
-				usort($events[$i],"compareStart");
+				for($ii=0;$ii<count($events[$i]);$ii++)
+				{
+					for($iii=0;$iii<count($events[$i][$ii]);$iii++)
+					{
+						$events[$i][$ii][$iii] = trim($events[$i][$ii][$iii]);
+					}
+				}
+			}
+			
+			// Sorts the events based on start time and end time
+			for($i=0;$i<count($events);$i++)
+			{
+				usort($events[$i],"sortEvents");
 			}
 			
 			// Returns the sorted array of events

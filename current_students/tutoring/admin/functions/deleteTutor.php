@@ -1,6 +1,7 @@
 <?php
 	//
-	// Function that takes a tutor name and deletes them from all files
+	// Takes a tutor array as an argument and deletes that tutors files
+	// and removes them from the tutors.csv file
 	//
 	
 	if(!function_exists("deleteTutor"))
@@ -11,16 +12,16 @@
 			include "readTutors.php";
 			include "writeTutors.php";
 			
-			// Gets the array of tutors
-			$tutors = readTutors("files/tutors.csv");
+			// Gets the necessary variables from the included functions
+			$tutors = readTutors();
 			
-			// An array that will be all tutors except the one being removed
+			// An array that will contain all tutors except the one being removed
 			$newTutors = array();
 			
 			// Iterates through all tutors adding them to the new array unless they are the same tutor being deleted
 			for($i=0;$i<count($tutors);$i++)
 			{
-				if(!(($tutors[$i][0]==$tutor[0])&&(trim($tutors[$i][1])==trim($tutor[1]))))
+				if(!(($tutor[0]==$tutors[$i][0])&&($tutor[1]==$tutors[$i][1])))
 				{
 					$newTutors[] = $tutors[$i];
 				}
@@ -29,8 +30,8 @@
 			// Writes the new tutors array to tutors.csv
 			writeTutors($newTutors);
 			
-			// Deletes the tutors file
-			$fileName = "files/" . $tutor[0] . trim($tutor[1]) . ".csv";
+			// Deletes the tutor file
+			$fileName = "files/" . $tutor[0] . $tutor[1] . ".csv";
 			unlink($fileName);
 		}		
 	}

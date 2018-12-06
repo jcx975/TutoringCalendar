@@ -1,26 +1,27 @@
 <?php
 	//
-	// Function to read each tutorEvents.csv file and make them one big
-	// string to then write to events.csv
+	// Takes an array of tutors as an argument and writes their events
+	// to the events.csv file
 	//
+	
 	if(!function_exists("writeEvents"))
 	{
-		function writeEvents($tutors,$path)
+		function writeEvents($tutors)
 		{
 			// Includes all necessary functions
-			include "readTutorEvents.php";
+			include "readEvents.php";
 			
-			// An string to hold all events
+			// A string to hold all events
 			$eventsString = "";
 			
 			// Iterates through each tutor
 			for($i=0;$i<count($tutors);$i++)
 			{
-				// Selects a file name based on the first and last name of the tutor
-				$fileName = $path . $tutors[$i][0] . trim($tutors[$i][1]) . ".csv";
+				// Select file of the current tutor
+				$fileName = "files/" . $tutors[$i][0] . $tutors[$i][1] . ".csv";
 				
 				// An array to hold the events of that file
-				$tutorEvents = readTutorEvents($fileName);
+				$tutorEvents = readEvents($fileName);
 				
 				// Iterates through each event in that array
 				for($ii=0;$ii<count($tutorEvents);$ii++)
@@ -29,13 +30,14 @@
 					{
 						for($iiii=0;$iiii<count($tutorEvents[$ii][$iii]);$iiii++)
 						{
+							// Adds delimiter between each part of the event except the after the last which is replaced with a new line character
 							if($iiii<count($tutorEvents[$ii][$iii])-1)
 							{
 								$eventsString .= $tutorEvents[$ii][$iii][$iiii] . ";";
 							}
 							else
 							{
-								$eventsString .= $tutorEvents[$ii][$iii][$iiii];							
+								$eventsString .= $tutorEvents[$ii][$iii][$iiii] . "\n";							
 							}
 						}
 					}
@@ -43,7 +45,7 @@
 			}
 			
 			// Attempts to open events.csv
-			$fileName = $path . "events.csv";
+			$fileName = "files/events.csv";
 			$file = fopen($fileName,"w");
 			if(!$file)
 			{

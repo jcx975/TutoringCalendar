@@ -1,11 +1,11 @@
 <?php
 	//
-	// Function that takes a tutors events and writes them to the tutors events file
+	// Takes arrays of event data and turns it into event arrays and saves it to a tutor file
 	//
 	
 	if(!function_exists("writeTutorEvents"))
 	{
-		function writeTutorEvents($day,$start,$startMod,$end,$endMod,$firstName,$lastName)
+		function writeTutorEvents($day,$start,$startIncrement,$startMod,$end,$endIncrement,$endMod,$location,$class,$firstName,$lastName)
 		{
 			// String to contain the events to write to the file
 			$events = "";
@@ -13,9 +13,10 @@
 			// Saves each line of events with delimiters and new line characters
 			for($i=0;$i<count($day);$i++)
 			{
-				$events .= $day[$i] . ";" . $start[$i] . ";"
-					. $startMod[$i] . ";" . $end[$i] . ";"
-					. $endMod[$i] . "\n";
+				$events .= $day[$i] . ";" . $start[$i] . ";" . $startIncrement[$i] . ";"
+					. $startMod[$i] . ";" . $end[$i] . ";" . $endIncrement[$i] . ";"
+					. $endMod[$i] . ";" . $location[$i] . ";" . $class[$i] . ";"
+					. $firstName . ";" . $lastName . "\n";
 			}
 			
 			// Attempts to open file

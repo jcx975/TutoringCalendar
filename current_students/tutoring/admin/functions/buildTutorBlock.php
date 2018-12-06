@@ -1,42 +1,45 @@
 <?php
 	//
-	// Function to build a single tutor block including name and individual schedule
+	// Takes a tutor array as an argument and returns the tutor block as a string
+	// A tutor block includes the tutors name, schedule, edit button, and delete button
 	//
 	
 	if(!function_exists("buildTutorBlock"))
 	{
-		function buildTutorBlock($tutor,$path)
+		function buildTutorBlock($tutor)
 		{
 			// Includes all necessary functions
-			include "readTutorEvents.php";
+			include "readEvents.php";
 			include "buildSchedule.php";
 			
-			$editTutorStringP1 = "<form action='editTutorPage.php' method='POST'>"
-				. "<input type='hidden' name='firstName' value='";
+			// Constructs the file name for the tutors events file
+			$fileName = "files/" . $tutor[0] . $tutor[1] . ".csv";
 			
-			$editTutorStringP2 = "'><input type='hidden' name='lastName' value='";
+			// Gets the necessary variables from the included functions
+			$events = readEvents($fileName);
+			$schedule = buildSchedule($events,TRUE);
 			
-			$editTutorStringP3 = "'><input class='button tut-add-button float-right' type='submit' value='Edit tutor'></form>";
+			// String to hold the content of the tutor block
+			$tutorBlock = "<div id='" . $tutor[0] . $tutor[1] . "' class='large-12 columns tutor-card shadow round'>";
 			
-			$editTutorString = $editTutorStringP1 . $tutor[0] . $editTutorStringP2 . trim($tutor[1]) . $editTutorStringP3;
+				
+			// Creates a delete tutor form with hidden values and a submit button
+			$tutorBlock .= "<form action='deletingTutor.php' method='POST'>"
+				. "<input type='hidden' name='firstNameDelete' value='" . $tutor[0] . "'>"
+				. "<input type='hidden' name='lastNameDelete' value='" . $tutor[1] . "'>"
+				. "<input class='button tut-add-button float-right' type='submit' value='Delete Tutor'></form>";
 			
-			$tutorEventsFileName = $path . $tutor[0] . trim($tutor[1]) . ".csv";
+			// Creates a edit tutor form with hidden values and a submit button
+			$tutorBlock .= "<form action='editTutor.php' method='POST'>"
+				. "<input type='hidden' name='firstName' value='" . $tutor[0] . "'>"
+				. "<input type='hidden' name='lastName' value='" . $tutor[1] . "'>"
+				. "<input class='button tut-add-button float-right' type='submit' value='Edit Tutor'></form>";
 			
-			$events = readTutorEvents($tutorEventsFileName);
-			$schedule = buildSchedule($events);
-			
-			// Old button
-			// <a href='./editTutors.php' class='button tut-edit-button float-right'>
-			
-			// String to hold the block contents
-			$tutorBlock = "<div id='" . $tutor[0] . trim($tutor[1]) .
-				"' class='large-12 columns tutor-card shadow round'>"
-					. $editTutorString . "</a>"
-					. "<h4><span class='tutor-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h4>"
-					. "<div class='columns small-12'>"
-					. $schedule . "</div></div>";
+			// Adds the schedule to the block
+			$tutorBlock .=  "<h4><span class='tutor-name'>" . $tutor[0] . " " . $tutor[1] . "</span></h4>"
+				. "<div class='columns small-12'>" . $schedule . "</div></div>";
 			
 			return $tutorBlock;
 		}
-	}	
+	}
 ?>

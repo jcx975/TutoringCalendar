@@ -1,68 +1,63 @@
 <?php
 	//
-	// Function that returns the contents of the editTutor page by checking if
-	// the tutor name given is a known tutor or a unknown one
+	// Builds a string of the entire edit tutoring page and uses other functions to build the form
+	// for submitting changes to the event information and a displays a schedule preview for the tutor
 	//
 	
 	if(!function_exists("buildEditTutorPage"))
 	{
-		function buildEditTutorPage($path)
+		function buildEditTutorPage()
 		{
 			// Includes all necessary functions
-			include "readTutors.php";
-			include "readTutorEvents.php";
-			include "editTutorForm.php";
+			include "readEvents.php";
 			include "buildSchedule.php";
+			include "buildEditTutorForm.php";
 			
-			// Makes the correct file name
-			$tutorsFileName = $path . "tutors.csv";
+			// Boolean set to true if this is a new tutor
+			$newTutor;
 			
-			// Gets the tutors array
-			$tutors = readTutors($tutorsFileName);
-			
-			// Array holding the current tutor
+			// Array to hold tutor information
 			$tutor = array($_POST["firstName"],$_POST["lastName"]);
 			
-			// Boolean to hold status as new tutor or not
-			$newTutor = TRUE;
+			// String that will contain the edit tutor page contents
+			$editTutorPageContents = "<div class='row'><h2>Editing <span class='tutor-name'>" . $tutor[0] . " " . $tutor[1] . "</span></h2>";
 			
-			// String to hold the editTutorForm
-			$tutorForm = "";
-			
-			// String to hold the tutor schedule
-			$tutorSchedule = "";
-			
-			// If this is a new tutor it makes an empty editTutorPage
-			if(($tutor[0] == "New")&&($tutor[1] == "Tutor"))
+			// Determines if this is a new tutor or not
+			if(($tutor[0]=="NEW")&&($tutor[1]=="TUTOR"))
 			{
 				$newTutor = TRUE;
-				$tutorForm = editTutorForm($tutor,$path,$newTutor);
 			}
 			else
 			{
-				for($i=0;$i<count($tutors);$i++)
-				{
-					if(($tutor[0]==$tutors[$i][0])&&(trim($tutor[1])==trim($tutors[$i][1])))
-					{
-						$newTutor = FALSE;
-						$tutorForm = editTutorForm($tutor,$path,$newTutor);
-					}
-				}
-				
-				// Makes the file name
-				$tutorFileName = $path . $tutor[0] . trim($tutor[1]) . ".csv";
-				
-				// Gets the events array
-				$tutorEvents = readTutorEvents($tutorFileName);
-				
-				// Gets the schedule of only this tutor
-				$tutorSchedule = buildSchedule($tutorEvents);
+				$newTutor = FALSE;
 			}
 			
-			// String with the entire contents of the editTutor page
-			$editTutorPageContents = "<div class='row'><h2>Editing <span class='tutor-name'>" . $tutor[0] . " " . trim($tutor[1]) . "</span></h2><a href='index.php'>Return</a>" . $tutorForm . $tutorSchedule . "</div>";
+			// If its a new tutor it makes a blank edit tutor page
+			if($newTutor)
+			{
+				// Appends the empty edit tutor form
+				$editTutorPageContents .= buildEditTutorForm($tutor,$newTutor);
+			}
+			// If this is an existing tutor it pulls the information and builds the schedule
+			else
+			{
+				// Appends the filled edit tutor form
+				$editTutorPageContents .= buildEditTutorForm($tutor,$newTutor);
+				
+				// Makes the file name
+				$fileName = "files/" . $tutor[0] . $tutor[1] . ".csv";
+				
+				// Gets the necessary variables from the included functions
+				$events = readEvents($fileName);
+				$schedule = buildSchedule($events,TRUE);
+				
+				$editTutorPageContents .= $schedule;
+			}
 			
-			// Returns the string of the page contents
+			// Closes the div tag
+			$editTutorPageContents .= "</div>";
+			
+			// Returns the string of the edit tutoring page contents
 			return $editTutorPageContents;
 		}
 	}

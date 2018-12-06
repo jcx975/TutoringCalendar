@@ -1,49 +1,17 @@
 <?php
-	//
-	// Main admin page
-	// Provides the tutoring block, full schedule, and buttons
-	// to edit tutors and publish changes
-	//
 	
-	// Starts the session to allow confirmation messages
-	session_start();
-	
-	// Checks if there was a confirmation message sent
-	if(isset($_SESSION["confirmEditTutor"]))
-	{
-		echo $_SESSION["confirmEditTutor"];
-		unset($_SESSION["confirmEditTutor"]);
-	}
-	
-	// Includes all necessary functions
 	include "functions/readTutors.php";
 	include "functions/buildTutorBlock.php";
-	include "functions/writeEvents.php";
-	include "functions/readEvents.php";
-	include "functions/buildSchedule.php";
 	
-	// Gets the necessary variables from the included functions
 	$tutors = readTutors();
-	writeEvents($tutors);
-	$events = readEvents("files/events.csv");
-	$schedule = buildSchedule($events);
 	
-	// A string to hold all the tutor blocks
 	$allBlocks = "";
-	
-	$addTutor = "<form action='editTutor.php' method='POST'>"
-		. "<input type='hidden' name='firstName' value='NEW'>"
-		. "<input type='hidden' name='lastName' value='TUTOR'>"
-		. "<input class='button tut-add-button float-right' type='submit' value='Add Tutor'></form>";
-		
-	$deleteAll = "<form action='deletingAll.php' method='POST'>"
-		. "<input class='button tut-add-button float-right' type='submit' value='Delete All Tutors'></form>";
-	
-	$allBlocks .= $deleteAll . $addTutor;
 	
 	for($i=0;$i<count($tutors);$i++)
 	{
+		
 		$allBlocks .= buildTutorBlock($tutors[$i]);
+		
 	}
 ?>
 
@@ -85,7 +53,7 @@
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
     <div class="row schedule purple-background round full-width">
         <h2 class="white">Schedule Preview</h2>
-        <?php echo $schedule; ?>
+        
     </div>
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
 <?php
