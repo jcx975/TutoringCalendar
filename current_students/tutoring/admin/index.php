@@ -33,7 +33,7 @@
 	$deleteAll = "<form action='deletingAll.php' method='POST'>"
 		. "<input class='button tut-add-button float-right' type='submit' value='Delete All Tutors'></form>";
 		
-	$tutorButtons = $addTutor . $deleteAll;
+	$tutorButtons = $deleteAll . $addTutor;
 	
 	for($i=0;$i<count($tutors);$i++)
 	{

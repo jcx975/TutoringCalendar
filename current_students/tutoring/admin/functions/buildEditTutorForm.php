@@ -17,8 +17,8 @@
 			$dayOfTheWeek = array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 			
 			// String with the discard changes, delete tutor, and save changes form
-			$editTutorForm = "<div class='row'><form id='discard' action='index.php' method='POST'></form>"
-				. "<form id='save' action='editingTutor.php' method='POST'></form><form id='delete' action='deletingTutor.php' method='POST'></form>";
+			$editTutorForm = "<div class='row'><form id='save' action='editingTutor.php' method='POST'></form>"
+				. "<form id='delete' action='deletingTutor.php' method='POST'></form>";
 			
 			// Adds the hidden values for the three forms
 			$editTutorForm .= "<input type='hidden' form='save' name='firstNameOld' value='" . $tutor[0] . "'>"
@@ -29,8 +29,8 @@
 				. "<input type='hidden' form='delete' name='lastNameDelete' value='" . $tutor[1] . "'>";
 			
 			// Adds the submit buttons for the three forms at the top
-			$editTutorForm .= "<input class='button tut-add-button float-left' type='submit' form='discard' value='Cancel'>&nbsp"
-				. "<input class='button tut-add-button float-left' type='submit' form='save' value='Save Changes'>&nbsp"
+			$editTutorForm .= "<a class='button tut-add-button float-left' href='index.php'>Cancel</a>"
+				. "<input class='button tut-add-button float-left' type='submit' form='save' value='Save Changes'>"
 				. "<input class='button tut-add-button float-left' type='submit' form='delete' value='Delete Tutor'><hr>";
 			
 			// If this is a new tutor it makes an empty edit tutor page
@@ -85,8 +85,8 @@
 			}
 			
 			// Adds the submit buttons for the three forms at the bottom
-			$editTutorForm .= "<input class='button tut-add-button float-left' type='submit' form='discard' value='Cancel'>&nbsp"
-				. "<input class='button tut-add-button float-left' type='submit' form='save' value='Save Changes'>&nbsp"
+			$editTutorForm .= "<a class='button tut-add-button float-left' href='index.php'>Cancel</a>"
+				. "<input class='button tut-add-button float-left' type='submit' form='save' value='Save Changes'>"
 				. "<input class='button tut-add-button float-left' type='submit' form='delete' value='Delete Tutor'></div>";
 			
 			// Returns the string of the full form
