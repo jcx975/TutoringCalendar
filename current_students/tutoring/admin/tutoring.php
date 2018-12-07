@@ -23,3 +23,6 @@
 	include "schedule.html";
 ?>
 	</div>
+<?php
+    include $path."footer.php";
+?>
