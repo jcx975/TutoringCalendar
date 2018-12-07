@@ -70,6 +70,12 @@
 		echo $_SESSION["confirmDeleteAll"];
 		unset($_SESSION["confirmDeleteAll"]);
 	}
+	
+	if(isset($_SESSION["confirmPublishChanges"]))
+	{
+		echo $_SESSION["confirmPublishChanges"];
+		unset($_SESSION["confirmPublishChanges"]);
+	}
 ?>
 
     <div class="banner row">
@@ -81,7 +87,7 @@
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
     <div class="row">
         <div class="large-12 columns">
-            <a href="buildTutoringPage.php" class="button tut-publish-button">Publish Changes</a>
+            <a href="publishingChanges.php" class="button tut-publish-button">Publish Changes</a>
         </div>
     </div>
     <div>
