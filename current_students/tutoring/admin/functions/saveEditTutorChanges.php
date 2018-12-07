@@ -49,8 +49,10 @@
 			// Variables from POST
 			$firstNameOld = $_POST["firstNameOld"];
 			$lastNameOld = $_POST["lastNameOld"];
+			$emailOld = $_POST["emailOld"];
 			$firstName = $_POST["firstName"];
 			$lastName = $_POST["lastName"];
+			$email = $_POST["email"];
 			
 			// Ensures all names don't include trailing or leading whitespace
 			$firstNameOld = trim($firstNameOld);
@@ -58,28 +60,28 @@
 			$firstName = trim($firstName);
 			$lastName = trim($lastName);			
 			
-			// Makes an array for the old and new name
-			$oldTutorName = array($firstNameOld,$lastNameOld);
-			$newTutorName = array($firstName,$lastName);
+			// Makes an array for the old and new tutor
+			$oldTutorArray = array($firstNameOld,$lastNameOld,$email);
+			$newTutorArray = array($firstName,$lastName,$email);
 			
-			// Checks if the tutors name was changed
-			if(!(($firstName==$firstNameOld)&&($lastName==$lastNameOld)))
+			// Checks if the tutors name or email was changed
+			if(!(($firstName==$firstNameOld)&&($lastName==$lastNameOld)&&($email==$emailOld)))
 			{
 				if(!$newTutor)
 				{
-					// Deletes the files of the old name
-					deleteTutor($oldTutorName);
+					// Deletes the files of the old tutor
+					deleteTutor($oldTutorArray);
 				}
 				
-				// Adds new tutor and files with new name
-				addTutor($newTutorName);
+				// Adds new tutor and files with new tutor
+				addTutor($newTutorArray);
 			}
 			
 			// If an event submission was received then update write them to the tutors events file 
 			if($eventSubmission)
 			{
 				// Writes the events over the tutors previous file
-				writeTutorEvents($day,$start,$startIncrement,$startMod,$end,$endIncrement,$endMod,$location,$class,$firstName,$lastName);
+				writeTutorEvents($day,$start,$startIncrement,$startMod,$end,$endIncrement,$endMod,$location,$class,$firstName,$lastName,$email);
 			}
 			// If there was no event submission then write an empty file to the tutors events file
 			else

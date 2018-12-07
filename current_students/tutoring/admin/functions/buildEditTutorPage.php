@@ -17,7 +17,7 @@
 			$newTutor;
 			
 			// Array to hold tutor information
-			$tutor = array($_POST["firstName"],$_POST["lastName"]);
+			$tutor = array($_POST["firstName"],$_POST["lastName"],$_POST["email"]);
 			
 			// String that will contain the edit tutor page contents
 			$editTutorPageContents = "<div class='row'><h2>Editing <span class='tutor-name'>" . $tutor[0] . " " . $tutor[1] . "</span></h2>";

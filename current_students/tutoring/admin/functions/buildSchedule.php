@@ -57,6 +57,7 @@
 							. $events[$i][$ii][6] . "<br>Location: " . $events[$i][$ii][7]
 							. "<br>Class: " . $events[$i][$ii][8]
 							. "<br>Tutor: " . $events[$i][$ii][9] . " " . $events[$i][$ii][10]
+							. "<br>Email: <a href='mailto:" . $events[$i][$ii][11] . "?Subject=Tutoring'>" . $events[$i][$ii][11] . "</a>"
 							. "</div><hr>";
 					}
 					

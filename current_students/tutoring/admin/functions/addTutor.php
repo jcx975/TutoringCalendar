@@ -18,7 +18,7 @@
 			// Makes sure there is an array to search
 			if(empty($tutors))
 			{
-				$tutors = array(array("DELETE","ALL"));
+				$tutors = array(array("DELETE","ALL","EMAIL"));
 			}
 			
 			// Boolean to ensure this is not a duplicate addition of a tutor
@@ -43,6 +43,7 @@
 				{
 					$tutors[0][0] = $tutors[1][0];
 					$tutors[0][1] = $tutors[1][1];
+					$tutors[0][2] = $tutors[1][2];
 					unset($tutors[1]);
 				}
 				

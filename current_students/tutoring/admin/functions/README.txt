@@ -2,6 +2,16 @@
 This text document includes information about the different functions in this file,
 including their arguments, return values, and purpose.
 =======================================================================================================
+addTutor.php
+	Arguments:
+		tutor - array
+			This is an array of a single tutor including their name
+			and any additonal information such as email.
+	Return:
+		NONE
+	Purpose:
+		This function is used to add a tutor to the tutors.csv file and make
+		an empty file for the tutor.
 buildEditTutorForm.php
 	Arguments:
 		tutors - array
@@ -112,6 +122,14 @@ readTutors.php
 	Purpose:
 		This function is used to read from the tutors.csv file and
 		get the information into an array fur use in other parts of the website.
+saveEditTutorChanges.php
+	Arguments:
+		NONE
+	Return:
+		NONE
+	Purpose:
+		This function is used to save the content submitted by the user into
+		the tutors files.
 sortEvents.php
 	Arguments:
 		x - array
@@ -141,6 +159,22 @@ sortTutors.php
 	Purpose:
 		This function is used to sort the tutors when they are read in
 		the readTutors.php function.
+writeEvents.php
+	Arguments:
+		tutors - array
+			This is an array of all the tutors and their information.
+	Return:
+		NONE
+	Purpose:
+		This function is used to write the events of all tutors into a single events file.
+writeTutorEvents.php
+	Arguments:
+		All event information - varies
+			These variables are used to write the tutors events file.
+	Return:
+		NONE
+	Purpose:
+		This function is used to write a tutors events to their events file.
 writeTutor.php
 	Arguments:
 		tutors - array

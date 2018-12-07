@@ -33,6 +33,7 @@
 			$tutorBlock .= "<form action='editTutor.php' method='POST'>"
 				. "<input type='hidden' name='firstName' value='" . $tutor[0] . "'>"
 				. "<input type='hidden' name='lastName' value='" . $tutor[1] . "'>"
+				. "<input type='hidden' name='email' value='" . $tutor[2] . "'>"
 				. "<input class='button tut-add-button float-right' type='submit' value='Edit Tutor'></form>";
 			
 			// Adds the schedule to the block

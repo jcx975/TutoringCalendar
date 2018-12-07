@@ -5,7 +5,7 @@
 	
 	if(!function_exists("writeTutorEvents"))
 	{
-		function writeTutorEvents($day,$start,$startIncrement,$startMod,$end,$endIncrement,$endMod,$location,$class,$firstName,$lastName)
+		function writeTutorEvents($day,$start,$startIncrement,$startMod,$end,$endIncrement,$endMod,$location,$class,$firstName,$lastName,$email)
 		{
 			// String to contain the events to write to the file
 			$events = "";
@@ -16,7 +16,7 @@
 				$events .= $day[$i] . ";" . $start[$i] . ";" . $startIncrement[$i] . ";"
 					. $startMod[$i] . ";" . $end[$i] . ";" . $endIncrement[$i] . ";"
 					. $endMod[$i] . ";" . $location[$i] . ";" . $class[$i] . ";"
-					. $firstName . ";" . $lastName . "\n";
+					. $firstName . ";" . $lastName . ";" . $email . "\n";
 			}
 			
 			// Attempts to open file

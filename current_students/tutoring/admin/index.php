@@ -27,6 +27,7 @@
 	$addTutor = "<form action='editTutor.php' method='POST'>"
 		. "<input type='hidden' name='firstName' value='NEW'>"
 		. "<input type='hidden' name='lastName' value='TUTOR'>"
+		. "<input type='hidden' name='email' value='example@email.com'>"
 		. "<input class='button tut-add-button float-right' type='submit' value='Add Tutor'></form>";
 		
 	$deleteAll = "<form action='deletingAll.php' method='POST'>"
