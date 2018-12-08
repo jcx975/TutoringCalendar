@@ -62,8 +62,11 @@
     </div>
     <div class="row"><img src="<?=$path?>/img/line.svg"></div>
     <div class="row">
-        <div class="large-12 columns">
-            <a href="publishingChanges.php" class="button tut-publish-button">Publish Changes</a>
+        <div class="large-12 columns text-center">
+			<a href="publishingChanges.php" class="button tut-publish-button">Publish Changes</a>
+			<p>
+				(Changes must be published to be made public.)
+			</p>
         </div>
     </div>
 

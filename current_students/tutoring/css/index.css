@@ -58,8 +58,9 @@
     background: #1779ba;
     display: block;
     width: 25%;
-    margin: auto;
-
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
 }
 
 .tut-deleteevent-button {
