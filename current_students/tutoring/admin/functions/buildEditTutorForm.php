@@ -87,7 +87,7 @@
 			// Adds the submit buttons for the three forms at the bottom
 			$editTutorForm .= "<a class='button tut-add-button float-left' href='index.php'>Cancel</a>"
 				. "<input class='button tut-add-button float-left' type='submit' form='save' value='Save Changes'>"
-				. "<input class='button tut-add-button float-left' type='submit' form='delete' value='Delete Tutor'></div>";
+				. "<input class='button tut-delete-button float-left' type='submit' form='delete' value='Delete Tutor'></div>";
 			
 			// Returns the string of the full form
 			return $editTutorForm;
