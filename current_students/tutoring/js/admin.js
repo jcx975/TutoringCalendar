@@ -8,6 +8,7 @@ $(document).ready( function()
 
 function addEventButtonClicked()
 {
+	// Adds a blank event to edit tutor page.
 	var button = $( this );
 	var dayString = button.parent().attr( "id" );
 	var dayDiv = button.parent();
@@ -37,16 +38,20 @@ function addEventButtonClicked()
 
 function deleteEventButtonClicked()
 {
+	// Deletes an event from edit tutor page.
 	var rowDiv = $( this ).closest( ".event-row" );
 	rowDiv.remove();
 }
 
 function tutorSearch()
 {
+	// Searches the tutors by name.
 	var searchString = $.trim( $( ".tutor-search" ).val().toLowerCase() );
 
 	if ( searchString != "" )
 	{
+		// Remove tutors that don't match the search, highlight
+		// the ones that do.
 		$( ".tutor-card" ).each( function( index )
 		{
 			var nameSpan = $( this ).find( ".tutor-name" );
