@@ -39,6 +39,10 @@
     border-radius: 20px;
 }
 
+.table-container {
+    overflow: auto;
+}
+
 .event-row, .calendar-event {
     padding: 2px;
     margin-bottom: 20px;

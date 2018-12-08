@@ -10,7 +10,7 @@
 		function buildSchedule($events,$tutorSchedule = FALSE)
 		{
 			// Creates a string with the first half of the schedule
-			$schedule = "<table>"
+			$schedule = "<div class='table-container'><table>"
 				. "<tr>"
 				.	"<th>Sunday</th>"
 				.	"<th>Monday</th>"
@@ -101,7 +101,7 @@
 			
 			// Fills in the second row with each days string
 			$schedule .= $sunString . $monString . $tueString . $wedString .
-				$thuString. $friString . $satString . "</tr></table>";
+				$thuString. $friString . $satString . "</tr></table></div>";
 			
 			// Returns the string of the schedule
 			return $schedule;
