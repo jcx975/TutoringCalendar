@@ -89,6 +89,7 @@
 
 .confirmation-message{
   text-align: center;
+  font-weight: bold;
 }
 
 .tut-add-button, .tut-delete-button {
