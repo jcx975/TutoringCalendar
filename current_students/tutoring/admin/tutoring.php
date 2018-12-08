@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/admin.js"></script>
+    <script src="../js/classFilter.js"></script>
 <?php
     include $path."head2.php";
 ?>
@@ -18,7 +19,12 @@
     </div>
 
 <div class="row"><img src="<?=$path?>/img/line.svg"></div>
-
+<div class="class-select-container half-width">
+Filter by class:
+    <select class="class-selector">
+        <option value="none">None</option>
+    </select>
+</div>
 	<div class="row schedule purple-background round full-width">
 		<h2 class="white">Schedule</h2>
 <?php
