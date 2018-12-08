@@ -30,7 +30,7 @@
 		. "<input type='hidden' name='email' value='example@email.com'>"
 		. "<input class='button tut-add-button float-right' type='submit' value='Add Tutor'></form>";
 
-	$deleteAll = "<form action='deletingAll.php' method='POST'>"
+	$deleteAll = "<form id='delete' action='deletingAll.php' method='POST'>"
 		. "<input class='button tut-delete-button float-right' type='submit' value='Delete All Tutors'></form>";
 
 	$tutorButtons = $deleteAll . $addTutor;

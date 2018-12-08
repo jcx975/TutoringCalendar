@@ -31,7 +31,7 @@
 			// Adds the submit buttons for the three forms at the top
 			$editTutorForm .= "<a class='button tut-add-button float-left' href='index.php'>Cancel</a>"
 				. "<input class='button tut-add-button float-left' type='submit' form='save' value='Save Changes'>"
-				. "<input class='button tut-add-button float-left' type='submit' form='delete' value='Delete Tutor'><hr>";
+				. "<input class='button tut-delete-button float-left' type='submit' form='delete' value='Delete Tutor'><hr>";
 			
 			// If this is a new tutor it makes an empty edit tutor page
 			if($newTutor)

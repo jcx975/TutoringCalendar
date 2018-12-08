@@ -29,7 +29,7 @@ $(document).ready( function()
 		// highlights the ones that do, unless "None" is selected.
 		if ( selected === "none" )
 		{
-			$( ".calendar-event" ).removeClass( "highlight" );
+			// $( ".calendar-event" ).removeClass( "highlight" );
 			$( ".calendar-event" ).fadeIn();
 		}
 		else
@@ -39,11 +39,11 @@ $(document).ready( function()
 				if ( $( this ).find( ".class-name" ).html().indexOf( selected ) === -1 )
 				{
 					$( this ).fadeOut();
-					$( this ).removeClass( "highlight" );
+					// $( this ).removeClass( "highlight" );
 				} else
 				{
 					$( this ).fadeIn();
-					$( this ).addClass( "highlight" );
+					// $( this ).addClass( "highlight" );
 				}
 			} );
 		}

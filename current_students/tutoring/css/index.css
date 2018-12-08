@@ -46,6 +46,10 @@
     border:1px solid gray;
 }
 
+.calendar-event {
+    border-radius: 10px;
+}
+
 .tut-publish-button {
     background: #1779ba;
     display: block;
@@ -92,7 +96,7 @@
 }
 
 .tut-delete-button {
-    background-color: darkred;
+    background-color: #e63232;
 }
 
 /*TEXT COLORS*/

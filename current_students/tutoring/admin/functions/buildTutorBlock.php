@@ -24,7 +24,7 @@
 			
 				
 			// Creates a delete tutor form with hidden values and a submit button
-			$tutorBlock .= "<form action='deletingTutor.php' method='POST'>"
+			$tutorBlock .= "<form id='delete' action='deletingTutor.php' method='POST'>"
 				. "<input type='hidden' name='firstNameDelete' value='" . $tutor[0] . "'>"
 				. "<input type='hidden' name='lastNameDelete' value='" . $tutor[1] . "'>"
 				. "<input class='button tut-delete-button float-right' type='submit' value='Delete Tutor'></form>";

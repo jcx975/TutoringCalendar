@@ -41,24 +41,24 @@
 					if($tutorSchedule)
 					{
 						// If the schedule is for an individual tutor it will not include the tutor name in the schedule
-						$tempString = "<div class='calendar-event shadow'>Start Time: <strong>" . $events[$i][$ii][1]
+						$tempString = "<div class='calendar-event shadow'><strong>Start Time:</strong> " . $events[$i][$ii][1]
 							. ":" . $events[$i][$ii][2] . $events[$i][$ii][3]
-							. "</strong><br>End Time: <strong>" . $events[$i][$ii][4] . ":" . $events[$i][$ii][5]
-							. $events[$i][$ii][6] . "</strong><br>Location: <strong>" . $events[$i][$ii][7]
-							. "</strong><br>Class: <strong><span class='class-name'>" . $events[$i][$ii][8]
-							. "</span></strong><hr></div>";
+							. "<br><strong>End Time:</strong> " . $events[$i][$ii][4] . ":" . $events[$i][$ii][5]
+							. $events[$i][$ii][6] . "<br><strong>Location:</strong> " . $events[$i][$ii][7]
+							. "<br><strong>Class:</strong> <span class='class-name'>" . $events[$i][$ii][8]
+							. "</span></div>";
 					}
 					else
 					{
 						// If the schedule is not for an individual tutor it will include the tutor name in the schedule
-						$tempString = "<div class='calendar-event shadow'>Start Time: <strong>" . $events[$i][$ii][1]
+						$tempString = "<div class='calendar-event shadow'><strong>Start Time:</strong> " . $events[$i][$ii][1]
 							. ":" . $events[$i][$ii][2] . $events[$i][$ii][3]
-							. "</strong><br>End Time: <strong>" . $events[$i][$ii][4] . ":" . $events[$i][$ii][5]
-							. $events[$i][$ii][6] . "</strong><br>Location: <strong>" . $events[$i][$ii][7]
-							. "</strong><br>Class: <strong><span class='class-name'>" . $events[$i][$ii][8]
-							. "</span></strong><br>Tutor: <strong>" . $events[$i][$ii][9] . " " . $events[$i][$ii][10]
-							. "</strong><br>Email: <a href='mailto:" . $events[$i][$ii][11] . "?Subject=Tutoring'>" . $events[$i][$ii][11] . "</a>"
-							. "<hr></div>";
+							. "<br><strong>End Time:</strong> " . $events[$i][$ii][4] . ":" . $events[$i][$ii][5]
+							. $events[$i][$ii][6] . "<br><strong>Location:</strong> " . $events[$i][$ii][7]
+							. "<br><strong>Class:</strong> <span class='class-name'>" . $events[$i][$ii][8]
+							. "</span><br><strong>Tutor:</strong> " . $events[$i][$ii][9] . " " . $events[$i][$ii][10]
+							. "<br><strong>Email:</strong> <a href='mailto:" . $events[$i][$ii][11] . "?Subject=Tutoring'>" . $events[$i][$ii][11] . "</a>"
+							. "</div>";
 					}
 					
 					// Checks the day of the current event

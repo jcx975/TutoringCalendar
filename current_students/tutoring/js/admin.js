@@ -4,6 +4,13 @@ $(document).ready( function()
 	$( ".tut-addevent-button" ).on( "click", addEventButtonClicked );
 	$( ".tut-deleteevent-button" ).on( "click", deleteEventButtonClicked );
 	$( ".tutor-search" ).on( "keyup", tutorSearch );
+
+	$( "form[id='delete']" ).on( "submit", function( e )
+	{
+		var r = confirm( "Are you sure you want to delete?")
+		if ( !r )
+			e.preventDefault( e );
+	} );
 } );
 
 function addEventButtonClicked()
@@ -59,18 +66,18 @@ function tutorSearch()
 			
 			if ( name.indexOf( searchString ) === -1 )
 			{
-				nameSpan.removeClass( "highlight" );
+				// nameSpan.removeClass( "highlight" );
 				$( this ).fadeOut();
 			}
 			else
 			{
 				$( this ).fadeIn();
-				nameSpan.addClass( "highlight" );
+				// nameSpan.addClass( "highlight" );
 			}
 		} );
 	} else
 	{
-		$( ".tutor-name" ).removeClass( "highlight" );
+		// $( ".tutor-name" ).removeClass( "highlight" );
 		$( ".tutor-card" ).fadeIn();
 	}
 }
