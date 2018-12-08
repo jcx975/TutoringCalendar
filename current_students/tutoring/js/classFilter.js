@@ -15,7 +15,7 @@ $(document).ready( function()
 	
 	for ( var i = 0; i < classes.length; i++ )
 	{
-		$( ".class-selector" ).append( "<option value=" + classes[ i ] + ">" + classes[ i ] + "</p>" );
+		$( ".class-selector" ).append( "<option value=" + classes[ i ] + ">" + classes[ i ] + "</option>" );
 	}
 
 	$( ".class-selector" ).on( "change", function()
